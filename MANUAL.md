@@ -14,7 +14,7 @@ Este kit contiene un short completo y probado (`agujero/`, agujero negro) y un s
   3. **Imagen de gancho:** el fotograma 0 ya es la imagen más espectacular del vídeo (el clímax o una versión de él), con la cámara empujando hacia dentro. Nada de planos de presentación lentos al principio.
   4. **Sonido de gancho:** golpe (timpani o boom) y whoosh en el fotograma 0.
   5. Comprueba el fotograma 0 y el 45 en las fotos de prueba: tiene que haber movimiento, texto y algo raro a la vista.
-- **Voz animada:** `VOZ=ricks python3 voz.py` (estilo elegido por Luis; opciones: alex_animado, alex_santa, dora). Escribe el guion para que se diga con energía: frases cortas, ¡exclamaciones!, ¿preguntas al espectador?, «…» antes de los giros. No escribas palabras enteras en MAYÚSCULAS en la voz, porque Kokoro las deletrea.
+- **Voz animada:** `VOZ=agujero python3 voz.py` (estilo elegido por Luis; opciones: alex_animado, alex_santa, dora). Escribe el guion para que se diga con energía: frases cortas, ¡exclamaciones!, ¿preguntas al espectador?, «…» antes de los giros. No escribas palabras enteras en MAYÚSCULAS en la voz, porque Kokoro las deletrea.
 - **Estilo:** el del paquete `shorts-animados-claude` (caricatura 3D: personajes planos con contorno en un mundo 3D pintado, tinta, desenfoque y gradación). La guía manda: `SKILL.md` + `referencias/BIBLIA_DE_ESTILO.md` de ese repositorio.
 
 ## 1. Preparar el entorno (unos 5 min)
@@ -145,6 +145,9 @@ Cada reel debe tener un protagonista que hace algo raro, un burlón y un remate 
 
 ## 9. Voz del canal: «ricks» (16-11-2026)
 Elegida por Luis: voz parecida a la del doblaje en español de Ricks Clips. Medido en su vídeo (pista «Español (US)»): tono mediano 200 Hz (152–267), muy expresiva.
-Nuestra voz `VOZ=ricks` (Piper es_MX-claude-high, por defecto en `voz.py`): 3,7 palabras/s, tono 195 Hz (159–248).
+Nuestra voz `VOZ=agujero` (Piper es_MX-claude-high, por defecto en `voz.py`): 3,7 palabras/s, tono 195 Hz (159–248).
 Instalación: `pip install --break-system-packages piper-tts` y descargar/descomprimir en /home/claude/tts2/
 https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-es_MX-claude-high.tar.bz2
+
+## 10. VOZ DEFINITIVA (16-11-2026, elegida por Luis): `VOZ=agujero`
+La misma voz del primer reel del agujero negro: Kokoro `em_alex`, velocidad 1,2 constante, pausas de 0,16 s, sin procesado. Es la opción por defecto de `voz.py`. Gratis y sin apps: se genera en el propio agente. (La sección 9, «ricks», queda solo como alternativa.)

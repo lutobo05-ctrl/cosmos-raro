@@ -15,20 +15,20 @@ import json, os, re, subprocess
 import numpy as np, soundfile as sf
 from kokoro_onnx import Kokoro
 
-STYLE = os.environ.get("VOZ", "ricks")
+STYLE = os.environ.get("VOZ", "agujero")
 if STYLE == "ricks":
     from piper import PiperVoice, SynthesisConfig
     PV = PiperVoice.load('/home/claude/tts2/vits-piper-es_MX-claude-high/es_MX-claude-high.onnx')
     VOICE = None
 else:
     k = Kokoro('/home/claude/tts/kokoro-v1.0.onnx', '/home/claude/tts/voices-v1.0.bin')
-    VOICE = {"alex_animado": "em_alex", "plano": "em_alex", "dora": "ef_dora",
+    VOICE = {"agujero": "em_alex", "alex_animado": "em_alex", "plano": "em_alex", "dora": "ef_dora",
              "alex_santa": 0.65 * k.get_voice_style('em_alex') + 0.35 * k.get_voice_style('em_santa')}[STYLE]
-SEMI = {"ricks": -0.5, "alex_animado": 1.5, "alex_santa": 1.0, "dora": 0.5, "plano": 0.0}[STYLE]
+SEMI = {"agujero": 0.0, "ricks": -1.5, "alex_animado": 1.5, "alex_santa": 1.0, "dora": 0.5, "plano": 0.0}[STYLE]
 
 def synth(s, speed):
     if STYLE == "ricks":
-        cfg = SynthesisConfig(length_scale=0.70 * 1.2 / speed, noise_scale=0.75, noise_w_scale=0.9)
+        cfg = SynthesisConfig(length_scale=0.76 * 1.2 / speed, noise_scale=0.7, noise_w_scale=0.85)
         a = np.concatenate([c.audio_float_array for c in PV.synthesize(s, syn_config=cfg)])
         return a.astype(np.float32), PV.config.sample_rate
     a, r = k.create(s, voice=VOICE, speed=speed, lang='es'); return a.astype(np.float32), r
@@ -36,6 +36,7 @@ BASE = float(os.environ.get("VOZ_SPEED", "1.2"))
 lines = [l.split('. ', 1)[1] for l in open('GUION.md').read().split('## Voz')[1].strip().splitlines() if re.match(r'^\d+\. ', l)]
 
 def speed_for(i, s):
+    if STYLE == "agujero": return 1.2
     if STYLE == "plano": return BASE - 0.08
     if i == 0: return BASE + 0.08                    # hook: punchy
     if s.strip().endswith('?'): return BASE - 0.08   # questions land
@@ -48,15 +49,19 @@ for i, s in enumerate(lines):
     nz = np.where(np.abs(a) > 0.01)[0]; a = a[max(0, nz[0] - 200): nz[-1] + 420]
     segs.append({'i': i + 1, 'text': s, 't0': round(t, 3), 't1': round(t + len(a) / sr, 3), 'words': len(s.split())})
     out.append(a); t += len(a) / sr
-    gap = 0.0 if i == len(lines) - 1 else (0.28 if s.strip().endswith(('?', '…')) else 0.11)
+    gap = 0.0 if i == len(lines) - 1 else 0.16 if STYLE == 'agujero' else (0.32 if s.strip().endswith(('?', '…')) else (0.22 if STYLE == 'ricks' else 0.11))
     out.append(np.zeros(int(gap * sr), np.float32)); t += gap
 os.makedirs('public/voz', exist_ok=True)
 sf.write('public/voz/voz_raw.wav', np.concatenate(out), sr)
 r = 2 ** (SEMI / 12)
 af = (f"asetrate={sr}*{r:.4f},aresample={sr},atempo={1/r:.4f}," if SEMI else "") + \
-     "highpass=f=90,equalizer=f=3200:t=q:w=1.2:g=5,equalizer=f=200:t=q:w=1:g=2," \
+     ("highpass=f=80,equalizer=f=3000:t=q:w=1.2:g=2.5,equalizer=f=180:t=q:w=1:g=3," if STYLE == "ricks" else "highpass=f=90,equalizer=f=3200:t=q:w=1.2:g=5,equalizer=f=200:t=q:w=1:g=2,") + \
+      \
      "acompressor=threshold=-20dB:ratio=4:attack=5:release=60:makeup=6,alimiter=limit=0.9"
-subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', 'public/voz/voz_raw.wav', '-af', af, 'public/voz/voz.wav'], check=True)
+if STYLE == 'agujero':  # voz del primer reel (agujero negro): Kokoro em_alex tal cual, sin procesado
+    import shutil; shutil.copy('public/voz/voz_raw.wav', 'public/voz/voz.wav')
+else:
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', 'public/voz/voz_raw.wav', '-af', af, 'public/voz/voz.wav'], check=True)
 json.dump(segs, open('frases.json', 'w'), ensure_ascii=False, indent=1)
 d = t; W = sum(s['words'] for s in segs)
 print(f'voz {STYLE}: {d:.2f}s, {W} palabras, {W/d:.2f} palabras/s')

@@ -1,0 +1,15 @@
+{
+  "titulo": "Lo más raro del universo esta semana",
+  "intro": "Bienvenido a Cosmos Raro. Esta semana hemos caído en un agujero negro y hemos pasado un día eterno en Venus. Aquí tienes los dos datos imposibles, con más detalles que no cabían en un minuto.",
+  "outro": "Y hasta aquí la semana. Cuéntame en los comentarios cuál te ha volado la cabeza, y suscríbete: cada día a las siete de la tarde, un dato imposible del universo.",
+  "reels": [
+    {"mp4": "/home/claude/agujero/out/agujero_negro_final.mp4", "tema": "Caer en un agujero negro",
+     "intro": "Empezamos fuerte. ¿Qué pasaría si cayeras en un agujero negro? Spoiler: depende de quién lo mire.",
+     "extra": "Un detalle más. La NASA simuló una caída en un agujero negro como el del centro de nuestra galaxia. Desde lejos, la cámara parecía congelarse justo antes del borde. Por eso a los agujeros negros los llamaban estrellas congeladas.",
+     "datos": ["Espaguetización: es su nombre científico", "Desde fuera te verías congelado", "En uno gigante cruzas el borde entero"]},
+    {"mp4": "/home/claude/venus/out/venus_short_final.mp4", "tema": "Un día en Venus",
+     "intro": "Ahora, un planeta donde el calendario no tiene sentido.",
+     "extra": "Y otra rareza: entre un amanecer y el siguiente en Venus pasan unos ciento diecisiete días terrestres, porque el planeta gira al revés mientras da vueltas al Sol.",
+     "datos": ["Gira sobre sí mismo en 243 días", "Da la vuelta al Sol en 225", "El Sol sale por el oeste"]}
+  ]
+}

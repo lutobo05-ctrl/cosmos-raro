@@ -15,7 +15,7 @@ Este kit contiene un short completo y probado (`agujero/`, agujero negro) y un s
 cd /home/claude
 git clone --depth 1 https://github.com/luispablovillasenor-afk/shorts-animados-claude ext/repo
 # el kit (este zip) se descarga de Drive y se descomprime en /home/claude/kit
-cd kit/agujero && npm install --no-audit --no-fund --loglevel=error
+cd kit/agujero && npm install   # (kit = este repo clonado) --no-audit --no-fund --loglevel=error
 pip install --break-system-packages -q kokoro-onnx soundfile scipy opencv-python-headless
 mkdir -p /home/claude/tts && cd /home/claude/tts
 curl -sSL -o voices-v1.0.bin https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin
@@ -44,13 +44,30 @@ Chrome está en `/usr/bin/google-chrome`. Renderizar SIEMPRE con `gl: "swangle"`
 - **Final:** el último plano debe tener algo en pantalla hasta la última palabra. Que no acabe en cielo vacío.
 - **Brillo general:** apunta a 0,30–0,50 de media. El agujero negro salió en 0,20, demasiado oscuro para el móvil.
 
-## 4. Publicar
-- Sube el MP4 final a la carpeta de Drive «Cosmos Raro / videos» con el nombre `AAAA-MM-DD_tema.mp4`.
-- **Metricool** (conector): programa la publicación en YouTube como Short para HOY a las 19:00 (Europe/Madrid).
-  - Título: ≤ 60 caracteres, gancho + emoji como mucho. Ej.: «¿Qué pasaría si cayeras en un agujero negro? 🕳️».
-  - Descripción: 2 líneas que amplían el dato, «Fuentes:» con 2–3 enlaces y los hashtags `#Shorts #espacio #universo #curiosidades #ciencia`.
-  - Si Metricool no está conectado o falla: NO se publica. Deja el vídeo y los textos en Drive y avisa al usuario con una notificación.
-- Añade una fila al registro: fecha, tema, gancho, título, enlace de Drive, estado (programado / pendiente de subir / error) y fuentes.
+## 4. Publicar (YouTube + TikTok + Instagram vía Metricool)
+1. **Copia ligera:** H.264 en dos pasadas a unos 1,2 Mbps (unos 8–10 MB), con nombre `AAAA-MM-DD_tema.mp4`.
+2. **URL pública:** `herramientas/subir_video.sh AAAA-MM-DD_tema.mp4` sube el vídeo a la rama `videos` (pública) y escribe la URL raw. Si falla (sin permiso de push), no hay publicación automática: entrega a Luis (punto 5).
+3. **Metricool**, una sola llamada a `createScheduledPost` con `media: [URL]`, fecha de HOY a las 19:00 Europe/Madrid y `autoPublish: true`. En `providers` van solo las redes que `getBrandSettings` muestre conectadas:
+   - `youtube`: `youtubeData {title, type:"short", privacy:"public", madeForKids:false, category:"SCIENCE_TECHNOLOGY", tags:[…]}`.
+   - `tiktok`: `tiktokData {title, isAigc:true}` (declara la IA, como pide TikTok).
+   - `instagram`: `instagramData {type:"REEL", showReelOnFeed:true, isAiGenerated:true}`.
+   - `text` (descripción): 2 líneas que amplían el dato + «Fuentes:» con 2–3 enlaces + «Un dato imposible cada día a las 19:00 → suscríbete» + `#Shorts #espacio #universo #curiosidades #ciencia`.
+   - `firstCommentText`: una pregunta para que la gente comente, del tipo «¿Tú te habrías tirado? 👇».
+4. **Título:** como mucho 60 caracteres, gancho + 1 emoji como mucho. Evita el clickbait falso: el título tiene que ser verdad.
+5. **Entregar siempre a Luis** (SendUserFile con el MP4 + SendUserMessage con título, descripción y etiquetas), diciendo si ya está programado o si tiene que subirlo él.
+6. Nunca subas vídeos a Drive (el conector solo admite unos 3 MB).
+7. **Registro:** fila del día en la hoja de Drive + `reels/AAAA-MM-DD_tema/` en el repo (guion, frases.json, story.ts, world.ts) + push a main.
+
+## 4b. La voz de Luis (los miércoles)
+El estratega de los domingos deja el guion del miércoles en `voz/AAAA-MM-DD_guion.md` y se lo manda a Luis. Si el miércoles existe `voz/AAAA-MM-DD.(m4a|mp3|wav|ogg|opus)` en el repo (haz `git pull` antes), usa su voz: `python3 herramientas/voz_usuario.py voz/AAAA-MM-DD.m4a GUION.md <carpeta_del_short>` genera `voz.wav` y `frases.json` en vez de Kokoro. Revisa las fotos de prueba en los momentos clave, porque los cortes son aproximados (±0,5 s). En la descripción pon «Narrado por Luis». Si no hay grabación, usa Kokoro como siempre.
+
+## 4c. Vídeo largo semanal (domingos)
+`herramientas/largo.py semana.json salida` monta un vídeo 16:9 de 8–10 min con los reels de la semana. Para cada reel lleva: tarjeta de capítulo narrada + el reel en el centro con datos en los laterales + «Y además…» con un dato extra investigado. Cierra con una despedida que pide suscribirse. Los reels se descargan de la rama `videos`. Se publica como `youtubeData.type:"video"` el domingo a las 12:00, con los capítulos de `salida_capitulos.txt` en la descripción. Las horas de visualización de los vídeos largos son la otra vía para monetizar (8.000 h en 12 meses para quien entre desde febrero de 2027); los Shorts no cuentan para esas horas.
+
+## 4d. Objetivos de monetización (para el estratega)
+- Escalón 1 (donaciones, membresías, tienda): 500 suscriptores + 3 subidas en 90 días + 3 M de visualizaciones de Shorts en 90 días o 3.000 h de vídeos largos en 12 meses.
+- Escalón 2 (anuncios): 1.000 suscriptores + 10 M de visualizaciones de Shorts en 90 días o 4.000 h. Desde el 1 de febrero de 2027, para quien entre nuevo: 20 M de visualizaciones de Shorts o 8.000 h.
+- YouTube no monetiza el contenido «masivo o repetitivo»: cada reel con mundo y chiste propios, la voz de Luis cada semana y fuentes reales.
 
 ## 5. Plazo
 La tarea empieza sobre las 12:40 (Madrid). Si a las 18:15 el vídeo no está listo, programa lo que haya solo si está completo y revisado. Si no lo está, avisa y deja el día como «pendiente».

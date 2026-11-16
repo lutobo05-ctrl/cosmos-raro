@@ -1,6 +1,6 @@
 # COSMOS RARO — manual del reel diario
 
-Canal de YouTube Shorts en español: «una historia real con giro, cada día a las 19:00 (Madrid)». **Temas de TODO tipo** (historia, ciencia, trucos, inventos, delitos curiosos, deporte, psicología, animales, espacio…). Siempre con la fórmula de las secciones 6, 7 y 8.
+Canal **«NADIE TE LO CONTÓ»** (antes Cosmos Raro; el repo y el registro conservan el nombre antiguo). YouTube Shorts en español: «una historia real con giro, cada día a las 19:00 (Madrid)». **Temas de TODO tipo** (historia, ciencia, trucos, inventos, delitos curiosos, deporte, psicología, animales, espacio…). Siempre con la fórmula de las secciones 6, 7 y 8.
 Este kit contiene un short completo y probado (`agujero/`, agujero negro) y un segundo mundo de ejemplo con suelo
 (`venus_world/`, superficie de Venus). Cada día se hace UN short nuevo con este mismo motor.
 

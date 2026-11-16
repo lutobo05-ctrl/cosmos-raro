@@ -7,8 +7,10 @@ Junta los reels de la semana en un vídeo de 8-10 min con narración nueva (Koko
 Escribe <salida>.mp4 (dos pasadas, < 95 MB para que quepa en GitHub) y <salida>_capitulos.txt para la descripción.
 
 Uso:  python3 largo.py semana.json salida   (ver semana_ejemplo.json)
-semana.json = {"titulo": str, "intro": str, "outro": str,
-               "reels": [{"mp4": ruta, "tema": str, "intro": str, "extra": str, "datos": [str, str, str]}]}
+semana.json = {"titulo": str, "gancho": str (frase de 8-15 s que engancha), "gancho_rotulo": str (pregunta corta en pantalla),
+               "intro": str, "outro": str,
+               "reels": [{"mp4": ruta, "tema": str, "intro": str, "extra": str, "datos": [str, str, str], "momento": 0.2}]}
+(momento = punto del reel, 0-1, del que sale su plano en el avance)
 Requiere: ffmpeg, Pillow, numpy, soundfile, kokoro-onnx con el modelo en /home/claude/tts.
 """
 import json, os, subprocess, sys, textwrap
@@ -28,14 +30,22 @@ ENC = ["-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv4
        "-c:a", "aac", "-b:a", "192k", "-ar", "48000", "-ac", "2"]
 
 _k = None
+SUBS = {}  # wav -> phrases for burned captions
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from subtitulos import build_ass, wrap_hook
 def tts(text, out):
     global _k
     if _k is None:
         from kokoro_onnx import Kokoro
         _k = Kokoro("/home/claude/tts/kokoro-v1.0.onnx", "/home/claude/tts/voices-v1.0.bin")
-    a, sr = _k.create(text, voice="em_alex", speed=1.1, lang="es")
+    a, sr = _k.create(text, voice="em_alex", speed=1.18, lang="es")
     a = np.concatenate([np.zeros(int(0.25 * sr), np.float32), a.astype(np.float32), np.zeros(int(0.45 * sr), np.float32)])
-    sf.write(out, a, sr)
+    raw = out + ".raw.wav"; sf.write(raw, a, sr)
+    r = 2 ** (1.5 / 12)  # same "radio" processing as voz.py (alex_animado)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", raw, "-af",
+                    f"asetrate={sr}*{r:.4f},aresample={sr},atempo={1/r:.4f},highpass=f=90,equalizer=f=3200:t=q:w=1.2:g=5,"
+                    "acompressor=threshold=-20dB:ratio=4:attack=5:release=60:makeup=6,alimiter=limit=0.9", out], check=True)
+    SUBS[out] = [{"text": text, "t0": 0.25, "t1": len(a) / sr - 0.45}]
     return len(a) / sr
 
 def font(sz, bold=True): return ImageFont.truetype(FB if bold else FM, sz)
@@ -60,10 +70,12 @@ def dur(path):
                                 capture_output=True, text=True).stdout.strip())
 
 def still_segment(png, wav, out, zoom=True):
-    """a still (with a slow Ken Burns push) + narration"""
+    """a still (with a slow Ken Burns push) + narration, with burned karaoke captions"""
     d = dur(wav); n = int(d * FPS) + 1
+    ass = out + ".ass"; open(ass, "w").write(build_ass(SUBS.get(wav, []), horizontal=True))
     vf = (f"scale={W*2}:{H*2},zoompan=z='min(1+0.0004*on,1.06)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d={n}:s={W}x{H}:fps={FPS}"
           if zoom else f"scale={W}:{H},fps={FPS}")
+    vf += f",ass={ass}"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-loop", "1", "-i", png, "-i", wav, "-vf", vf + ",format=yuv420p",
                     "-t", f"{d:.3f}", *ENC, "-shortest", out], check=True)
 
@@ -120,6 +132,27 @@ def main(cfg_path, out_base):
         nonlocal t
         if label: chapters.append((t, label))
         segs.append(path); t += dur(path)
+    # COLD OPEN (hook): the best moments of the week, fast, with the hook line spoken and a big title
+    if cfg.get("gancho"):
+        wav = os.path.join(tmp, "hook.wav"); dh = tts(cfg["gancho"], wav)
+        picks = cfg["reels"][:4]; each = dh / len(picks); parts = []
+        for j, r in enumerate(picks):
+            d0 = dur(r["mp4"]); st0 = d0 * float(r.get("momento", 0.2))
+            pj = os.path.join(tmp, f"h{j}.mp4")
+            fc = ("[0:v]scale=1920:-2,crop=1920:1080,boxblur=30:3,eq=brightness=-0.25[bg];[0:v]scale=-2:1080[fg];"
+                  "[bg][fg]overlay=(W-w)/2:0,fps=30,format=yuv420p[v]")
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{st0:.2f}", "-t", f"{each:.3f}", "-i", r["mp4"],
+                            "-filter_complex", fc, "-map", "[v]", "-an", "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", pj], check=True)
+            parts.append(pj)
+        hl = os.path.join(tmp, "hlist.txt"); open(hl, "w").write("".join(f"file '{os.path.abspath(x)}'\n" for x in parts))
+        hv = os.path.join(tmp, "hv.mp4")
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", hl, "-c", "copy", hv], check=True)
+        ass = os.path.join(tmp, "hook.ass")
+        open(ass, "w").write(build_ass(SUBS[wav], True, 0.0, wrap_hook(cfg.get("gancho_rotulo", cfg["titulo"]).upper(), 26), min(dh, 3.0)))
+        p = os.path.join(tmp, "s000.mp4")
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", hv, "-i", wav, "-vf", f"ass={ass}", "-map", "0:v", "-map", "1:a",
+                        "-t", f"{dh:.3f}", *ENC, p], check=True)
+        add(p, "Avance")
     # intro
     wav = os.path.join(tmp, "intro.wav"); tts(cfg["intro"], wav)
     png = os.path.join(tmp, "intro.png"); card(cfg["titulo"], "Un dato imposible del universo, cada día", stars(1)).save(png)

@@ -79,3 +79,20 @@ El estratega de los domingos deja el guion del miércoles en `voz/AAAA-MM-DD_gui
 
 ## 5. Plazo
 La tarea empieza sobre las 12:40 (Madrid). Si a las 18:15 el vídeo no está listo, programa lo que haya solo si está completo y revisado. Si no lo está, avisa y deja el día como «pendiente».
+
+## 6. Fórmula Ricks Clips (referencia estudiada, 16-11-2026)
+Fuente: análisis de revid.ai de los 15 Shorts de @RicksClips3000 (167 M de vistas) + medición de 20 vídeos a 30 fps en la Biblia de estilo del skill.
+- Duración 56–78 s (mediana 64 s), ~200–280 palabras. La voz empieza en el cuadro 1–4.
+- 7 tiempos del guion:
+  1. GANCHO (0–3 s): una frase llana de 9–14 palabras sobre algo raro, sin explicar el porqué. Sin fechas ni contexto.
+  2. PLANTEAMIENTO (3–12 s): quién, dónde, UN número exacto y qué está en juego, con la cámara recorriendo el set.
+  3. EL QUE SE BURLA (12–20 s): una frase sarcástica corta, en primer plano grande.
+  4. EL PROTAGONISTA (~20 s): tranquilo, no se explica.
+  5. ESCALADA (20–40 s): tres sucesos raros cada vez mayores; el burlón cada vez más chulo.
+  6. «VERÁS,» (una sola vez, a mitad): el truco explicado con algo cotidiano (soplar la sopa), 3–5 frases cortas.
+  7. REMATE (últimos ~10 s): se ENSEÑA, no se explica, y cae sobre el burlón. La última frase es la mayor revelación. Sin moraleja.
+- Para el espacio: el «burlón» puede ser un científico escéptico, un rey, un astronauta chulo… el universo le da la lección.
+- Narrador: uno solo, enérgico, «rápido pero natural», como un chaval contándoselo a un amigo. Sin fechas ni títulos, máximo un nombre.
+- Subtítulos: 1–2 palabras a la vez, blanco grueso con borde oscuro.
+- Luz: sol cálido y bajo contra sombras frías azul-violeta. Sombras nunca negras; el verde nunca es el color principal.
+- Cámara: baja y abierta, deslizándose siempre (en movimiento ~65 % de los cuadros), casi sin cortes duros (0–1 por vídeo); las transiciones son movimientos de cámara o destellos de 4 cuadros.

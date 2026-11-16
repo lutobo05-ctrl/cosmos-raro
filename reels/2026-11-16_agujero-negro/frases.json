@@ -1,0 +1,86 @@
+[
+ {
+  "i": 1,
+  "text": "Si cayeras en un agujero negro, tu amigo te vería congelado para siempre… mientras tú ya serías espagueti.",
+  "t0": 0.06,
+  "t1": 5.575,
+  "words": 18
+ },
+ {
+  "i": 2,
+  "text": "Imagínate: vas en una nave con tu amigo Leo. Sales a mirar, te asomas demasiado… y empiezas a caer.",
+  "t0": 5.735,
+  "t1": 11.144,
+  "words": 19
+ },
+ {
+  "i": 3,
+  "text": "Al principio, nada raro. Flotas, como en cualquier parte del espacio.",
+  "t0": 11.304,
+  "t1": 14.718,
+  "words": 11
+ },
+ {
+  "i": 4,
+  "text": "Pero la gravedad tira mucho más de tus pies que de tu cabeza. Te estira, y te aprieta por los lados.",
+  "t0": 14.878,
+  "t1": 19.943,
+  "words": 21
+ },
+ {
+  "i": 5,
+  "text": "Los científicos lo llaman, en serio, espaguetización.",
+  "t0": 20.103,
+  "t1": 22.866,
+  "words": 7
+ },
+ {
+  "i": 6,
+  "text": "Mientras tanto, Leo ve algo rarísimo: cuanto más te acercas al borde, más despacio te mueves. Cada vez más rojo, más oscuro… hasta quedarte quieto.",
+  "t0": 23.026,
+  "t1": 30.666,
+  "words": 25
+ },
+ {
+  "i": 7,
+  "text": "Espera… ¿entonces sigues cayendo o no?",
+  "t0": 30.826,
+  "t1": 32.859,
+  "words": 6
+ },
+ {
+  "i": 8,
+  "text": "Fíjate: cerca de un agujero negro, el tiempo se estira igual que tú. Tu reloj va normal, pero el de Leo vuela.",
+  "t0": 33.019,
+  "t1": 38.408,
+  "words": 22
+ },
+ {
+  "i": 9,
+  "text": "Y tu luz tiene que subir una cuesta cada vez más empinada para llegar hasta él.",
+  "t0": 38.568,
+  "t1": 42.604,
+  "words": 16
+ },
+ {
+  "i": 10,
+  "text": "Por suerte, si el agujero es gigante, como el del centro de nuestra galaxia, cruzarías el borde sin notar nada.",
+  "t0": 42.764,
+  "t1": 48.127,
+  "words": 20
+ },
+ {
+  "i": 11,
+  "text": "Por desgracia, una vez dentro, todos los caminos llevan al centro. Ni siquiera la luz puede salir.",
+  "t0": 48.287,
+  "t1": 53.301,
+  "words": 17
+ },
+ {
+  "i": 12,
+  "text": "Así que, para Leo, nunca terminas de caer. Y para ti… ya terminó.",
+  "t0": 53.461,
+  "t1": 56.671,
+  "words": 13
+ }
+]

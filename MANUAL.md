@@ -96,3 +96,19 @@ Fuente: análisis de revid.ai de los 15 Shorts de @RicksClips3000 (167 M de vist
 - Subtítulos: 1–2 palabras a la vez, blanco grueso con borde oscuro.
 - Luz: sol cálido y bajo contra sombras frías azul-violeta. Sombras nunca negras; el verde nunca es el color principal.
 - Cámara: baja y abierta, deslizándose siempre (en movimiento ~65 % de los cuadros), casi sin cortes duros (0–1 por vídeo); las transiciones son movimientos de cámara o destellos de 4 cuadros.
+
+## 7. Comprobación medida obligatoria (paso del vídeo de Mr omi)
+Antes de dar un reel por bueno: `python3 herramientas/medir_30fps.py reel.mp4 /tmp/medida` y comparar con la referencia.
+Medición del reel del agujero negro (16-11) frente a la referencia:
+| Medida | Referencia | Agujero negro | Qué hacer |
+|---|---|---|---|
+| Brillo medio | 0.43–0.54 | 0.20 | Subir luz: el espacio NO es negro, es azul noche/violeta con nebulosas |
+| Píxeles casi negros | 2 % | 56 % | Nunca negro puro: fondo mínimo ~#1a1440 |
+| Saturación | 0.38–0.65 | 0.82 | Bajar ~25 % la saturación del grade |
+| Duración de cada movimiento de cámara | ~23 cuadros, entrada y salida suaves | 8 cuadros | Deslizamientos más largos (20–25 cuadros) |
+| Cortes duros | 0–1 | 0 | Bien |
+| Cámara en movimiento | ~65 % | 73 % | Bien |
+Otras reglas que encontraron sus agentes: líneas de tinta en ~3/4 de los bordes (que el desenfoque no las borre),
+personajes de 3,5 cabezas de alto con brazos y piernas finos, sombras violetas al atardecer (no marrones),
+luz cálida en el planteamiento y azul noche cuando empieza el «Verás,».
+Si el reel falla en 2 o más medidas, se corrige antes de publicar.

@@ -112,3 +112,33 @@ Otras reglas que encontraron sus agentes: líneas de tinta en ~3/4 de los bordes
 personajes de 3,5 cabezas de alto con brazos y piernas finos, sombras violetas al atardecer (no marrones),
 luz cálida en el planteamiento y azul noche cuando empieza el «Verás,».
 Si el reel falla en 2 o más medidas, se corrige antes de publicar.
+
+## 8. Cómo escribe Ricks Clips: 20 guiones transcritos (16-11-2026)
+Últimos 20 Shorts de @RicksClips3000 (0,56–34,8 M de vistas, de 41 a 78 s, mayoría de 58 a 66 s), transcritos desde YouTube.
+Primeras frases reales (así abren):
+- «He loaded the shotgun with gold and fired it into the walls of the mine.» (5 M)
+- «He drilled 82 holes into the wood because down the hill an army is marching…» (8,4 M)
+- «They painted the jail cell pink.» (11 M)
+- «He saw gaps into a railroad every 39 ft.» (29,6 M)
+- «He poured cooking oil into the sea with a pirate ship so close behind them…» (16,7 M)
+- «They buried a man alive with a bell tied to his finger.» (13,5 M)
+- «He put a bronze ball in a dragon's mouth and told the emperor: if this ever falls out, run.» (34,8 M)
+- «A man snuck into a family's house every night and moved every single thing one inch to the left.» (10 M)
+- «If you plant a tree beside an empty road, cars will steer right into it.» (5,8 M)
+
+REGLAS SACADAS DE LOS 20:
+1. **Gancho = «Él/Ellos + verbo en pasado + acción absurda»** (14 de 20). Un acto concreto y visual, nunca un dato ni una pregunta. Los 6 restantes: «Si haces X, pasa Y», «Hay un botón… y nadie puede pulsarlo», «Imagina que…».
+2. **«Verás,» (You see) en 17 de 20.** Dos usos: justo después del gancho para dar contexto en 1 frase, y/o a 10–15 s del final para explicar el truco.
+3. **Burla en diálogo, corta y graciosa**, siempre de un testigo: «¿Vamos a luchar o a rallar queso?», «A Barbie le va a encantar». 1–3 líneas por vídeo.
+4. **Comparaciones cotidianas exageradas**: «como un paraguas humano», «perdería una carrera contra uno que lleva dos cervezas», «¿alguna vez has soplado la sopa?».
+5. **Escalada con conectores**: «Pero se pone más raro», «Entonces», «Hasta que una noche», «A la mañana siguiente».
+6. **Un número exacto** en el planteamiento (82 agujeros, 15 minutos, 39 pies, 47 arañazos).
+7. **Final en BUCLE**: en 10 de 20 la última frase se corta en la última palabra («…justo cuando un tren entra en la…») para que el vídeo vuelva a empezar y se vea dos veces. El remate es una imagen, no una moraleja.
+8. Sin fechas, sin introducción, máximo un nombre (Gary, Jerry, Eddie), personajes anónimos («su colega», «el rico»).
+9. Títulos: «Por qué X…», «Cómo un X…», «El X que…», «Esta forma salvó…». Nunca «Curiosidades de…».
+
+ADAPTACIÓN A COSMOS RARO (ejemplos de gancho):
+- «Un astronauta metió una pluma y un martillo en la mochila y los soltó a la vez.»
+- «Pintaron de negro el satélite más caro del mundo.»
+- «Él apostó su carrera a que Venus giraba al revés.»
+Cada reel debe tener un protagonista que hace algo raro, un burlón y un remate visual que cae sobre el burlón.

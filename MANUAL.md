@@ -1,6 +1,6 @@
 # COSMOS RARO — manual del reel diario
 
-Canal de YouTube Shorts en español: «un dato imposible del universo, cada día a las 19:00 (Madrid)».
+Canal de YouTube Shorts en español: «una historia real con giro, cada día a las 19:00 (Madrid)». **Temas de TODO tipo** (historia, ciencia, trucos, inventos, delitos curiosos, deporte, psicología, animales, espacio…). Siempre con la fórmula de las secciones 6, 7 y 8.
 Este kit contiene un short completo y probado (`agujero/`, agujero negro) y un segundo mundo de ejemplo con suelo
 (`venus_world/`, superficie de Venus). Cada día se hace UN short nuevo con este mismo motor.
 
@@ -32,10 +32,10 @@ Chrome está en `/usr/bin/google-chrome`. Renderizar SIEMPRE con `gl: "swangle"`
 
 ## 2. Crear el short del día
 1. Copia `kit/agujero` en `/home/claude/hoy` (enlaza `node_modules` con `ln -s`) y renombra la composición en `src/Root.tsx`.
-2. **Tema y gancho:** elige el siguiente tema «pendiente» del registro, o uno nuevo mejor. El gancho es la primera frase: una paradoja que sea verdad («En X, Y pasa al revés»). Funcionan bien: «¿Qué pasaría si…?», escalas imposibles y cosas que existen de verdad y parecen mentira.
+2. **Tema y gancho:** una historia REAL y poco conocida con giro, de cualquier tema (alterna temas: no dos días seguidos del mismo). Comprueba cada dato en 2 fuentes. PROHIBIDO repetir historias de Ricks Clips u otros canales del formato (lista en la sección 8): busca historias nuevas. El gancho sigue la regla 1 de la sección 8 (alguien hace algo absurdo, en pasado).
 3. **Guion** (`GUION.md`, 160–200 palabras, unos 12 bloques). Fórmula de la Biblia: gancho → «Imagínate…» → escalada con cifras concretas → giro «Espera…» → explicación «Fíjate:» con una analogía cotidiana → «Por suerte… / Por desgracia…» → remate irónico que cierra el gancho. Escribe los números con letras para la voz.
 4. **Voz:** `python3 voz.py` (lee `## Voz` del guion, ajusta `SPEED` para quedar entre 45 y 58 s y genera `frases.json` con los tiempos). Usa `frases.json` para colocar cada acción entre 0 y 3 fotogramas antes de su palabra.
-5. **Mundo y tomas** (`src/videos/bh/story.ts` y `world.ts`): reutiliza el motor (`toon.ts`, `troop.ts`, `paint.ts`, `shade.ts`, `ink.ts`, `lensblur.ts`, `grade.ts`). Escribe un mundo NUEVO para el tema. El astronauta (`astro()`) es la mascota del canal y sale siempre, pero en situaciones distintas. Hay dos ejemplos: espacio (agujero negro: disco con shader, nave, relojes, ondas, escena interior) y superficie (`venus_world/`: cielo pintado, suelo, rocas, volcanes, nubes, mesa, cohete).
+5. **Mundo y tomas** (`src/videos/bh/story.ts` y `world.ts`): reutiliza el motor (`toon.ts`, `troop.ts`, `paint.ts`, `shade.ts`, `ink.ts`, `lensblur.ts`, `grade.ts`). Escribe un mundo NUEVO para el tema. Personajes nuevos para cada historia (época y lugar de la historia); el astronauta solo si la historia es del espacio. Hay dos ejemplos: espacio (agujero negro: disco con shader, nave, relojes, ondas, escena interior) y superficie (`venus_world/`: cielo pintado, suelo, rocas, volcanes, nubes, mesa, cohete).
 6. **Fotos de prueba** antes de renderizar: `node pruebas/fotos.mjs <Comp> out/t_ f1,f2,... 0.5`. Haz un collage y míralo. Arregla y repite hasta que todas las tomas se lean bien.
 7. **Render:** `pruebas/render_all.sh` (tramos de unos 340 fotogramas; adapta el id y los rangos) en segundo plano, y comprueba el avance cada 10 minutos. Velocidad aproximada: 1,8–3 s por fotograma en espacio sin desenfoque y 4–5 s con desenfoque o superficie. Un short de 55 s tarda entre 1 y 1,5 h. Si el tiempo no da, baja `cInf` a 0 en más tomas.
 8. **Sonido:** adapta `audio/bh_audio.py` (música sintetizada con los acordes por sección, efectos en sus fotogramas y voz encima). Objetivo: voz delante, música 5–10 dB por debajo, efectos unos 9 dB por debajo, -14 LUFS y -1 dBTP.
@@ -59,7 +59,7 @@ Chrome está en `/usr/bin/google-chrome`. Renderizar SIEMPRE con `gl: "swangle"`
    - `youtube`: `youtubeData {title, type:"short", privacy:"public", madeForKids:false, category:"SCIENCE_TECHNOLOGY", tags:[…]}`.
    - `tiktok`: `tiktokData {title, isAigc:true}` (declara la IA, como pide TikTok).
    - `instagram`: `instagramData {type:"REEL", showReelOnFeed:true, isAiGenerated:true}`.
-   - `text` (descripción): 2 líneas que amplían el dato + «Fuentes:» con 2–3 enlaces + «Un dato imposible cada día a las 19:00 → suscríbete» + `#Shorts #espacio #universo #curiosidades #ciencia`.
+   - `text` (descripción): 2 líneas que amplían el dato + «Fuentes:» con 2–3 enlaces + «Un dato imposible cada día a las 19:00 → suscríbete» + `#Shorts #historiasreales #curiosidades` + 2 etiquetas del tema.
    - `firstCommentText`: una pregunta para que la gente comente, del tipo «¿Tú te habrías tirado? 👇».
 4. **Título:** como mucho 60 caracteres, gancho + 1 emoji como mucho. Evita el clickbait falso: el título tiene que ser verdad.
 5. **Entregar siempre a Luis** (SendUserFile con el MP4 + SendUserMessage con título, descripción y etiquetas), diciendo si ya está programado o si tiene que subirlo él.
@@ -91,7 +91,7 @@ Fuente: análisis de revid.ai de los 15 Shorts de @RicksClips3000 (167 M de vist
   5. ESCALADA (20–40 s): tres sucesos raros cada vez mayores; el burlón cada vez más chulo.
   6. «VERÁS,» (una sola vez, a mitad): el truco explicado con algo cotidiano (soplar la sopa), 3–5 frases cortas.
   7. REMATE (últimos ~10 s): se ENSEÑA, no se explica, y cae sobre el burlón. La última frase es la mayor revelación. Sin moraleja.
-- Para el espacio: el «burlón» puede ser un científico escéptico, un rey, un astronauta chulo… el universo le da la lección.
+- El «burlón»: un vecino, un jefe, un rival, un rey, un científico escéptico… y en el espacio puede ser un científico escéptico, un rey, un astronauta chulo… el universo le da la lección.
 - Narrador: uno solo, enérgico, «rápido pero natural», como un chaval contándoselo a un amigo. Sin fechas ni títulos, máximo un nombre.
 - Subtítulos: 1–2 palabras a la vez, blanco grueso con borde oscuro.
 - Luz: sol cálido y bajo contra sombras frías azul-violeta. Sombras nunca negras; el verde nunca es el color principal.
@@ -102,7 +102,7 @@ Antes de dar un reel por bueno: `python3 herramientas/medir_30fps.py reel.mp4 /t
 Medición del reel del agujero negro (16-11) frente a la referencia:
 | Medida | Referencia | Agujero negro | Qué hacer |
 |---|---|---|---|
-| Brillo medio | 0.43–0.54 | 0.20 | Subir luz: el espacio NO es negro, es azul noche/violeta con nebulosas |
+| Brillo medio | 0.43–0.54 | 0.20 | Subir luz: nunca negro; de noche o en el espacio, azul noche/violeta |
 | Píxeles casi negros | 2 % | 56 % | Nunca negro puro: fondo mínimo ~#1a1440 |
 | Saturación | 0.38–0.65 | 0.82 | Bajar ~25 % la saturación del grade |
 | Duración de cada movimiento de cámara | ~23 cuadros, entrada y salida suaves | 8 cuadros | Deslizamientos más largos (20–25 cuadros) |

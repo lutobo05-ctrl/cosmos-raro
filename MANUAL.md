@@ -133,7 +133,7 @@ REGLAS SACADAS DE LOS 20:
 4. **Comparaciones cotidianas exageradas**: «como un paraguas humano», «perdería una carrera contra uno que lleva dos cervezas», «¿alguna vez has soplado la sopa?».
 5. **Escalada con conectores**: «Pero se pone más raro», «Entonces», «Hasta que una noche», «A la mañana siguiente».
 6. **Un número exacto** en el planteamiento (82 agujeros, 15 minutos, 39 pies, 47 arañazos).
-7. **Final en BUCLE**: en 10 de 20 la última frase se corta en la última palabra («…justo cuando un tren entra en la…») para que el vídeo vuelva a empezar y se vea dos veces. El remate es una imagen, no una moraleja.
+7. **Final en BUCLE**: en 7 de 20 la última frase se corta en la última palabra («…justo cuando un tren entra en la…») para que el vídeo vuelva a empezar y se vea dos veces. El remate es una imagen, no una moraleja.
 8. Sin fechas, sin introducción, máximo un nombre (Gary, Jerry, Eddie), personajes anónimos («su colega», «el rico»).
 9. Títulos: «Por qué X…», «Cómo un X…», «El X que…», «Esta forma salvó…». Nunca «Curiosidades de…».
 

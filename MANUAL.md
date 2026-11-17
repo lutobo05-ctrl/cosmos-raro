@@ -151,3 +151,11 @@ https://github.com/k2-fsa/sherpa-onnx/releases/download/tts-models/vits-piper-es
 
 ## 10. VOZ DEFINITIVA (16-11-2026, elegida por Luis): `VOZ=agujero`
 La misma voz del primer reel del agujero negro: Kokoro `em_alex`, velocidad 1,2 constante, pausas de 0,16 s, sin procesado. Es la opción por defecto de `voz.py`. Gratis y sin apps: se genera en el propio agente. (La sección 9, «ricks», queda solo como alternativa.)
+
+## 11. LA HISTORIA TIENE QUE ENGANCHAR SOLA (Luis, 17-11-2026)
+Feedback del primer reel (el zapatero que se hizo pasar por capitán): la animación ha mejorado mucho, pero la historia no engancha porque nadie conoce al personaje y el interés depende de la explicación.
+Prueba obligatoria: si se la cuentas a un amigo en 1 frase, te pregunta «¿y qué pasó?». Tipos válidos (alternarlos):
+1. **Hitos y sucesos famosos contados desde un ángulo desconocido** (Titanic, Apolo 13, Chernóbil, Napoleón, Cleopatra, las pirámides, un Mundial…). El nombre conocido ya engancha.
+2. **Historias reales asombrosas con giro**, entendibles sin contexto y, mejor, conocidas en España y Latinoamérica.
+3. **Ficción original** («¿Y si…?», fábulas con giro, como «El pueblo construido alrededor de un botón» o «Todo recuerdo tiene un precio» de Ricks Clips). Nunca se presenta como real: ni título ni descripción dicen «real» o «verdadera», y en el registro se marca como ficción.
+Selección: 5 candidatas con gancho de 1 frase, puntuadas de 1 a 10 en «¿quiero saber qué pasa?», «¿lo entiende cualquiera sin contexto?» y «¿el final sorprende?». Se elige la de más nota, con un mínimo de 24/30.

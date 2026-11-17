@@ -1,0 +1,7 @@
+{"escenas":[
+ {"tipo":"color","fondo":"#F1EEE8","img":"fotos/estrella-dtf.png","dur":2.0,"texto":"Una estrella.","estilo":"titulo","pos":"abajo"},
+ {"tipo":"foto","img":"fotos/dream-bigger-photo-3.jpg","dur":2.0,"zoom":[1.25,1.1],"foco":[0.62,0.45],"texto":"Un rumbo.","estilo":"titulo","pos":"abajo"},
+ {"tipo":"foto","img":"fotos/dream-bigger-look-back.jpg","dur":2.2,"zoom":[1.0,1.08],"foco":[0.5,0.4],"texto":"Dream Bigger","estilo":"titulo","pos":"abajo","sub":"Sigue tu estrella"},
+ {"tipo":"foto","img":"fotos/dream-bigger-flat.jpg","dur":2.0,"zoom":[1.05,1.12],"foco":[0.5,0.42],"texto":"Diseñada e impresa en Palma","estilo":"frase","pos":"abajo"},
+ {"tipo":"cierre","dur":2.4,"texto":"Sigue tu estrella"}
+]}

@@ -1,0 +1,6 @@
+{"diapositivas":[
+ {"tipo":"foto","img":"fotos/dream-bigger-photo-2.jpg","zoom":1.0,"foco":[0.5,0.4],"texto":"Dream Bigger","estilo":"titulo","pos":"abajo","sub":"La camiseta"},
+ {"tipo":"color","fondo":"#F1EEE8","img":"fotos/estrella-dtf.png","texto":"Una rosa de los vientos: lleva siglos marcando el rumbo.","estilo":"frase","pos":"abajo"},
+ {"tipo":"color","fondo":"#2E62B0","texto":"Decide hacia dónde vas. Apunta más alto.","estilo":"titulo","pos":"centro"},
+ {"tipo":"cierre","texto":"Sigue tu estrella"}
+]}

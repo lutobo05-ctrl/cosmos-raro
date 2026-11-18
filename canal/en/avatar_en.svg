@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 800 800">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="34%" r="75%">
+      <stop offset="0" stop-color="#ffd27a"/>
+      <stop offset="0.28" stop-color="#3fc1b0"/>
+      <stop offset="0.62" stop-color="#2a6fb8"/>
+      <stop offset="1" stop-color="#2b2470"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="800" fill="url(#bg)"/>
+
+  <g stroke="#1f1633" stroke-width="13" stroke-linejoin="round" stroke-linecap="round">
+    <!-- body -->
+    <path d="M262 790 C262 650 300 590 400 585 C500 590 538 650 538 790 Z" fill="#ffcf3f"/>
+    <!-- head -->
+    <circle cx="400" cy="405" r="178" fill="#ffdcb4"/>
+    <!-- beanie -->
+    <path d="M226 375 C230 270 300 228 400 228 C500 228 570 270 574 375 C510 340 290 340 226 375 Z" fill="#e8483d"/>
+    <path d="M226 375 C290 345 510 345 574 375" fill="none"/>
+    <!-- arm up to mouth -->
+    <path d="M490 600 C484 585 476 572 468 558" fill="none" stroke-width="40" stroke="#1f1633"/>
+    <path d="M490 600 C484 585 476 572 468 558" fill="none" stroke-width="16" stroke="#ffcf3f"/>
+  </g>
+
+  <g stroke="#1f1633" stroke-width="13" stroke-linejoin="round" stroke-linecap="round">
+    <!-- eyes glancing to the side (toward viewer's right) -->
+    <ellipse cx="340" cy="418" rx="18" ry="26" fill="#1f1633" stroke="none"/>
+    <ellipse cx="440" cy="418" rx="18" ry="26" fill="#1f1633" stroke="none"/>
+    <circle cx="334" cy="408" r="6" fill="#ffffff" stroke="none"/>
+    <circle cx="434" cy="408" r="6" fill="#ffffff" stroke="none"/>
+        <!-- cheeks -->
+    <ellipse cx="300" cy="470" rx="30" ry="16" fill="#ff9e9a" stroke="none"/>
+    <ellipse cx="508" cy="470" rx="30" ry="16" fill="#ff9e9a" stroke="none"/>
+    <!-- mouth: small "oh" -->
+    <ellipse cx="395" cy="502" rx="15" ry="18" fill="#7a2b3a"/>
+    <!-- cupped hand beside mouth -->
+    <g transform="rotate(10 455 505)"><path d="M428 478 C428 446 486 446 486 478 L486 540 C486 566 428 566 428 540 Z" fill="#ffdcb4"/><path d="M430 512 C410 508 404 534 428 538" fill="#ffdcb4"/><path d="M447 470 L447 500 M467 470 L467 500" fill="none" stroke-width="6"/></g>
+  </g>
+
+  <!-- whisper lines -->
+  <g stroke="#ffffff" stroke-width="12" stroke-linecap="round" fill="none" opacity="0.95">
+    <path d="M200 470 L245 480"/>
+    <path d="M196 515 L242 512"/>
+    <path d="M210 558 L250 543"/>
+  </g>
+</svg>
